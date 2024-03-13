@@ -9,8 +9,7 @@ const Admin = require("../models/admin");
 const transporter = nodemailer.createTransport(
   sendGridTranport({
     auth: {
-      api_key:
-        "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",
+      api_key: process.env.API_KEY,
     },
   })
 );

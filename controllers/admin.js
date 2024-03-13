@@ -177,7 +177,11 @@ exports.postDeleteProduct = (req, res, next) => {
       if (!product) {
         return new Error("No product Found!");
       }
-      deleteImageInS3(product.imageUrl);
+      try {
+        deleteImageInS3(product.imageUrl);
+      } catch (err) {
+        console.log(err);
+      }
       return Product.findByIdAndDelete(prodId);
     })
     .then(() => {
